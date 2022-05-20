@@ -1,8 +1,11 @@
 <template>
     <div>
         <div class="navbar"></div>
-        <AddNew @add="addNewUser"/>
-        <UsersList :users="users" @removeUser="removeUser"/>
+        <div class="loader" v-if="pageLoading">Loading...</div>
+        <template v-else>
+            <AddNew @add="addNewUser"/>
+            <UsersList :users="users" @removeUser="removeUser"/>
+        </template>
     </div>
 </template>
 
@@ -18,7 +21,8 @@ export default {
     },
     data() {
         return {
-            users: []
+            users: [],
+            pageLoading: false
         }
     },
     created(){
@@ -29,7 +33,9 @@ export default {
             this.users.push(user)
         },
         async getUsers() {
+            this.pageLoading = true
             this.users = await dataApi.getUsers()
+            this.pageLoading = false
         },
         removeUser(userId) {
             const index = this.users.findIndex(user => user.id === userId)
