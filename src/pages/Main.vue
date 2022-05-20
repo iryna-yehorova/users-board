@@ -1,7 +1,10 @@
 <template>
     <div>
        <Header />
-        <div class="loader" v-if="pageLoading">Loading...</div>
+        <div class="loader" v-if="pageLoading">
+            <svg class="motion-reduce:hidden animate-spin ..." viewBox="0 0 24 24"></svg>
+            Loading...
+        </div>
         <template v-else>
             <AddNew @add="addNewUser"/>
             <UsersList :users="users" @removeUser="removeUser"/>

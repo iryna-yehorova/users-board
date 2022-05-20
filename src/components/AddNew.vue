@@ -3,14 +3,12 @@
         <h1 class="card__heading sm:text-base md:text-2xl lg:text-3xl text-black text-center py-5">Create User</h1>
         <form @submit.prevent="checkForm" autocomplete="off">
             <div class="form-group">
-                <label for="name" class="card__text sm:text-base text-sm pb-1 ">Name</label>
-                <input v-model="name" type="text" id="name">
-                <p v-if="errorName" class="error-message">Required</p>
+                <label for="name" class="card__text sm:text-base text-sm pb-1">Name</label>
+                <Input v-model="name" id="name" :error="errorName"/>
             </div>
             <div class="form-group">
                 <label for="job" class="card__text sm:text-base text-sm pb-1">Job</label>
-                 <input v-model="job" type="text" id="job">
-                <p v-if="errorJob" class="error-message">Required</p>
+                <Input v-model="job" id="job" :error="errorJob"/>
             </div>
             <div>
                 <Button title="Submit" />
@@ -21,11 +19,13 @@
 
 <script>
 import Button from './Button'
+import Input from './Input.vue'
 import * as dataApi from '../backend/dataAPI'
 
 export default {
     components: {
-        Button
+        Button, 
+        Input
     },
     data() {
         return {
