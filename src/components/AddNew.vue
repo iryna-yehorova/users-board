@@ -4,11 +4,11 @@
         <form @submit.prevent="checkForm" autocomplete="off" class="flex flex-col items-center">
             <div class="form-group mb-6" >
                 <label for="name" class="card__text sm:text-base text-sm pb-1">Name</label>
-                <Input v-model="name" id="name" :error="errorName"/>
+                <Input v-model="name" id="name" :error="errorName" @change="getName(name)"/>
             </div>
             <div class="form-group mb-6">
                 <label for="job" class="card__text sm:text-base text-sm pb-1">Job</label>
-                <Input v-model="job" id="job" :error="errorJob"/>
+                <Input v-model="job" id="job" :error="errorJob" @change="getJob(job)"/>
             </div>
             <div>
                 <Button title="Submit"/>
@@ -44,6 +44,12 @@ export default {
         }
     },
     methods: {
+        getName(name) {
+            this.name = name
+        },
+        getJob(job) {
+            this.job = job
+        }, 
         checkForm(){
             if(this.nameIsValid && this.jobIsValid) {
                 this.createUser()
