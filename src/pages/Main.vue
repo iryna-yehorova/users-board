@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="navbar"></div>
+       <Header />
         <div class="loader" v-if="pageLoading">Loading...</div>
         <template v-else>
             <AddNew @add="addNewUser"/>
@@ -10,12 +10,14 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue'
 import AddNew from '../components/AddNew.vue'
 import UsersList from '../components/UsersList.vue'
 import * as dataApi from '../backend/dataAPI'
 
 export default {
     components: {
+        Header,
         AddNew,
         UsersList
     },
@@ -46,4 +48,7 @@ export default {
 </script>
 
 <style>
+.navbar {
+    box-shadow: 0px 4px 16px rgba(32, 32, 32, 0.05);
+}
 </style>

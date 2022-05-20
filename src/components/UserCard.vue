@@ -1,28 +1,40 @@
 <template>
     <div class="card">
-        <p>{{user.name}}</p>
-        <p>Color: {{color ? color : '---'}}</p>
-        <button @click="generateColor">Generate color</button>
+        <p>{{ item.name }}</p>
+        <p>Color: {{ item.color ? item.color : '---' }}</p>
+        <Button title="Generate Color" @click="generateColor"></Button>
         <button @click="deleteUser">Delete user</button>
     </div>
 </template>
 
 <script>
+import Button from './Button.vue'
 export default {
+    components: {
+        Button
+    },
     props: {
         user: Object
     },
     data() {
         return {
-            color: ''
+                item: {}
+        }
+    },
+    watch: {
+        user: {
+            handler(val) {
+                this.item = val
+            },
+            immediate: true
         }
     },
     methods: {
         generateColor() {
-            this.color = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+            this.item.color = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
         },
         deleteUser() {
-            this.$emit('removeUser', this.user.id)
+            this.$emit('removeUser', this.item.id)
         }
     }
 }
