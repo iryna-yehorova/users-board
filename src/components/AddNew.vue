@@ -1,17 +1,17 @@
 <template>
-    <div class="card rounded-3xl bg-white">
+    <div class="card rounded-3xl bg-white pb-7 sm:w-[250px] md:w-[450px] lg:w-[730px]">
         <h1 class="card__heading sm:text-base md:text-2xl lg:text-3xl text-black text-center py-5">Create User</h1>
-        <form @submit.prevent="checkForm" autocomplete="off">
-            <div class="form-group">
+        <form @submit.prevent="checkForm" autocomplete="off" class="flex flex-col items-center">
+            <div class="form-group mb-6" >
                 <label for="name" class="card__text sm:text-base text-sm pb-1">Name</label>
                 <Input v-model="name" id="name" :error="errorName"/>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-6">
                 <label for="job" class="card__text sm:text-base text-sm pb-1">Job</label>
                 <Input v-model="job" id="job" :error="errorJob"/>
             </div>
             <div>
-                <Button title="Submit" />
+                <Button title="Submit"/>
             </div>
         </form>
     </div>

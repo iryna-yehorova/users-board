@@ -5,10 +5,10 @@
             <svg class="motion-reduce:hidden animate-spin ..." viewBox="0 0 24 24"></svg>
             Loading...
         </div>
-        <template v-else>
-            <AddNew @add="addNewUser"/>
+        <div v-else class="flex flex-col items-center">
+            <AddNew @add="addNewUser" class="mb-[106px]"/>
             <UsersList :users="users" @removeUser="removeUser"/>
-        </template>
+        </div>
     </div>
 </template>
 

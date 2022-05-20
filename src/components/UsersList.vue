@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(user, index) in users" :key="index">
-            <UserCard :user="user" @removeUser="removeUser"/>
+            <UserCard :user="user" @removeUser="removeUser" class="mb-11"/>
         </div>
     </div>
 </template>
